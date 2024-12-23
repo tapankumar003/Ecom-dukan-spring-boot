@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Products</title>
+    <style type="text/css">
+    .prodCont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 16px;
+    row-gap: 40px;
+    }
+    .inside_pro{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    }
+    </style>
+</head>
+<body>
+    <h1>Product List</h1>
+    <a href="/products/add">Add New Product</a>
+   <div class="prodCont">
+        <div th:each="product : ${products}">
+            <div class="inside_pro">
+            <h2 th:text="${product.name}"></h2>
+            <p th:text="${product.description}"></p>
+            <p>Price: $<span th:text="${product.price}"></span></p>
+            <img th:src="@{${'/images/'+product.imagePath}}" alt="Product Image" width="200">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
